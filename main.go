@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+)
 
 func main() {
-	fmt.Println("oh hello there")
+	if err := http.ListenAndServe("localhost:8080", helloHandler{}); err != nil {
+		panic(err)
+	}
+}
+
+type helloHandler struct{}
+
+func (helloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte(`oh hello there`))
 }
