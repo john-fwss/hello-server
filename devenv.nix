@@ -4,8 +4,23 @@
 {
   # https://devenv.sh/packages/
   packages = with pkgs; [ 
+    buf
     git
+    gnumake
     go
+    gofumpt
+    golangci-lint
+    gopls
+    go-migrate
+    grpcurl
+    mkdocs
+    ngrok
+    postgres-lsp
+    protoc-gen-go
+    protoc-gen-connect-go
+    ripgrep
+    sqlc
+    temporal-cli
   ];
 
   # https://devenv.sh/languages/
@@ -22,16 +37,29 @@
     echo "-------------------------------------------------"
     echo "--- hello friend, lets write some software :) ---"
     echo "-------------------------------------------------"
-    echo ""
-    echo ""
   '';
 
   scripts.printTools.exec = ''
     echo "-------------------------------------------------"
     echo "--------------------- tools ---------------------"
     echo "-------------------------------------------------"
-    git --version
-    go version
+    echo buf: "${pkgs.buf.version}"
+    echo git: "${pkgs.git.version}"
+    echo make: "${pkgs.gnumake.version}"
+    echo go: "${pkgs.go.version}"
+    echo gofumpt: "${pkgs.gofumpt.version}"
+    echo golangci-lint: "${pkgs.golangci-lint.version}"
+    echo gopls: "${pkgs.gopls.version}"
+    echo migrate: "${pkgs.go-migrate.version}"
+    echo grpcurl: "${pkgs.grpcurl.version}"
+    echo mkdocs: "${pkgs.mkdocs.version}"
+    echo ngrok: "${pkgs.ngrok.version}"
+    echo postgres-lsp: "${pkgs.postgres-lsp.version}"
+    echo protoc-gen-go: "${pkgs.protoc-gen-go.version}"
+    echo protoc-gen-connect-go: "${pkgs.protoc-gen-connect-go.version}"
+    echo ripgrep: "${pkgs.ripgrep.version}"
+    echo sqlc: "${pkgs.sqlc.version}"
+    echo temporal: "${pkgs.temporal-cli.version}"
   '';
 
   enterShell = ''
